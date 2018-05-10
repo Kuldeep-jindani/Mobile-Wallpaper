@@ -1,0 +1,32 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context="project.sau.pro.com.wallpaper.FeaturedFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/wallpaper_grid_featured"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.gms.ads.AdView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:id="@+id/adView"
+            ads:adSize = "BANNER"
+            ads:adUnitId = "ca-app-pub-7796828333997958/4152584076"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+        </com.google.android.gms.ads.AdView>
+    </RelativeLayout>
+
+</FrameLayout>

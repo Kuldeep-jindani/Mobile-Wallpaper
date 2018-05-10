@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:id="@+id/linear_daily"
+        android:layout_gravity="center"
+        android:layout_weight="5.8"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_daily"
+            android:text="Search"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold|italic"
+            />
+    </RelativeLayout>
+
+
+
+    <View
+        android:layout_below="@id/linear_daily"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
+    <EditText
+        android:layout_below="@id/linear_daily"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:hint="Search Category"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:id="@+id/search_category"
+        android:backgroundTint="#000000"
+        android:textSize="17dp"
+
+        android:background="@drawable/rounded_corner"
+        />
+
+
+    <View
+        android:layout_below="@id/search_category"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
+    <!--<com.srx.widget.PullToLoadView-->
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/search_category"
+        android:id="@+id/wallpaper_grid_search_activity"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

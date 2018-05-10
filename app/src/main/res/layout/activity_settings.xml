@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+ 
+ 
+ <LinearLayout
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="50dp">
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Settings"
+      android:textColor="#000000"
+      android:textSize="20dp"
+      android:layout_gravity="center"
+      android:gravity="center"
+      android:textStyle="bold"
+      />
+
+ </LinearLayout>
+  <View
+      android:layout_width="match_parent"
+      android:background="#000000"
+      android:layout_height="2dp">
+  </View>
+
+
+  <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/rate_us"
+       android:text="Rate Us"
+      android:layout_marginBottom="10dp"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:layout_marginTop="7dp"
+       android:textSize="20dp"
+       android:textColor="#000000"
+       android:gravity="center"
+       />
+  <View
+      android:layout_width="match_parent"
+      android:background="#000000"
+      android:layout_height="1dp">
+  </View>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/share_app"
+        android:text="Share This App"
+        android:layout_margin="7dp"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:gravity="center"
+        />
+
+  <View
+      android:layout_width="match_parent"
+      android:background="#000000"
+      android:layout_height="1dp">
+  </View>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/remove_ads"
+      android:text="Remove Ads"
+      android:layout_margin="7dp"
+      android:textSize="20dp"
+      android:textColor="#000000"
+      android:gravity="center"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:background="#000000"
+      android:layout_height="1dp">
+  </View>
+ <TextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/more_apps"
+     android:text="More Apps"
+     android:layout_margin="7dp"
+     android:textSize="20dp"
+     android:textColor="#000000"
+     android:gravity="center"
+     />
+
+  <ImageView
+      android:src="@drawable/netflix"
+      android:id="@+id/img1"
+      android:layout_gravity="center"
+      android:layout_width="150dp"
+      android:layout_height="140dp"
+      android:layout_margin="7dp"
+      />
+
+  <ImageView
+      android:layout_gravity="center"
+      android:src="@drawable/diet"
+      android:layout_width="150dp"
+      android:layout_height="140dp"
+      android:id="@+id/img2"
+      android:layout_margin="7dp"
+      />
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+   <com.google.android.gms.ads.AdView
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:id="@+id/adView"
+       android:layout_margin="4dp"
+       ads:adSize = "BANNER"
+       ads:adUnitId = "ca-app-pub-7796828333997958/4152584076"
+       android:layout_gravity="center"
+       android:layout_height="wrap_content">
+
+   </com.google.android.gms.ads.AdView>
+  </RelativeLayout>
+ </LinearLayout>
+</ScrollView>

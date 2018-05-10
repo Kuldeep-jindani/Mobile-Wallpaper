@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="project.sau.pro.com.wallpaper.MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/container"
+
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/linear_daily"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="5.8"
+        android:layout_height="match_parent">
+        <ImageView
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/seting_vector"
+
+            android:layout_margin="5dp"
+            android:src="@drawable/settingsvector"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txt_daily"
+            android:text="Daily"
+            android:textSize="20dp"
+
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold|italic"
+            /><!--
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/search_bar"
+            android:layout_margin="5dp"
+            android:src="@drawable/searchicon"
+            />-->
+    </RelativeLayout>
+
+<FrameLayout
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_below="@+id/linear_daily"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:text="Daily"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.gms.ads.AdView
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:id="@+id/adView"
+            ads:adSize = "BANNER"
+            ads:adUnitId = "ca-app-pub-7796828333997958/4152584076"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+        </com.google.android.gms.ads.AdView>
+    </RelativeLayout>
+</FrameLayout>
+
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5.6"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+
+
+</LinearLayout>
+
+</RelativeLayout>
