@@ -24,7 +24,7 @@ public class CategoryImages extends AppCompatActivity {
         String string =getIntent().getStringExtra("name");
         Toast.makeText(this, "cate id "+string, Toast.LENGTH_SHORT).show();
 
-        new Paginator_categoryimage(getApplicationContext(),category_images,string).initializePagination();
+        new Paginator_categoryimage(getApplicationContext(),category_images,string);
 
 
 

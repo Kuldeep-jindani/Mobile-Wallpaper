@@ -35,7 +35,7 @@ public class FeatureImageGrid extends Fragment {
 
 //        new Paginator(getContext(),pullToLoadView).initializePagination();
 
-        new Paginator_categoryimage(getContext(),pullToLoadView,id).initializePagination();
+        new Paginator_categoryimage(getContext(),pullToLoadView,id);
 
         AdView adView = view.findViewById(R.id.adView);
         MobileAds.initialize(getContext(),"ca-app-pub-7796828333997958/4152584076");

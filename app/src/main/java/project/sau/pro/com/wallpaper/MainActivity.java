@@ -3,6 +3,7 @@ package project.sau.pro.com.wallpaper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            Drawable background = getResources().getDrawable(R.drawable.maingradient);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(android.R.color.transparent));
+            window.setNavigationBarColor(getResources().getColor(android.R.color.transparent));
+            window.setBackgroundDrawable(background);
+        }
         setContentView(R.layout.activity_main);
         adView = findViewById(R.id.adView);
         MobileAds.initialize(this,App_ID);

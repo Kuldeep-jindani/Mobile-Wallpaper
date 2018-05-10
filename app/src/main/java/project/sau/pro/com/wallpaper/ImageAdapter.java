@@ -52,8 +52,8 @@ public class ImageAdapter extends PagerAdapter {
         final Grid_model grid_model=grid_models.get(position);
         view= (ViewGroup) LayoutInflater.from(context).inflate(R.layout.preview,null);
         ImageView imageView = view.findViewById(R.id.img_preview);
-        final Button button = view.findViewById(R.id.set_as_bcgrnd);
-        button.setOnClickListener(new View.OnClickListener() {
+//        final Button button = view.findViewById(R.id.set_as_bcgrnd);
+       /* button.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("StaticFieldLeak")
             @Override
             public void onClick(View view) {
@@ -93,13 +93,19 @@ public class ImageAdapter extends PagerAdapter {
                     }
                 }.execute();
             }
-        });
+        });*/
+
+
+
+
 //        imageView.setImageResource(this.grid_models.get(position).getId());
   /*       imageView = new ImageView(context);
         int padding = context.getResources().getDimensionPixelSize(R.dimen.padding_medium);
         imageView.setPadding(padding, padding, padding, padding);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 *///        imageView.setImageResource(grid_model.getImg_url());
+
+
         Log.e("dhgsfsdg",grid_model.getImg_url());
         Picasso.get().load(grid_model.getImg_url())
 
