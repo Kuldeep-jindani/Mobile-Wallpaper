@@ -28,7 +28,7 @@ TextView txt_share,remove_ads,txt_rateus,txt_more_apps;
         AdView adView = findViewById(R.id.adView);
         MobileAds.initialize(getApplicationContext(),"ca-app-pub-7796828333997958/4152584076");
         AdRequest adRequest = new AdRequest.Builder().addTestDevice("ca-app-pub-7796828333997958/4152584076").build();
-        adView.loadAd(adRequest);
+       adView.loadAd(adRequest);
         RateThisApp.onStart(this);
 
         img1=findViewById(R.id.img1);

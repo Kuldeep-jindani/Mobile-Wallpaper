@@ -51,7 +51,7 @@ public class Preview_daily extends AppCompatActivity {
     String App_ID = "ca-app-pub-7796828333997958/4152584076";
     //AdView adView;
 
-    ImageView download,set_as_bcgrnd;
+    ImageView download,set_as_bcgrnd,unliked;
 
     InterstitialAd mInterstitialAd;
     @SuppressLint("StaticFieldLeak")
@@ -64,6 +64,7 @@ public class Preview_daily extends AppCompatActivity {
         setContentView(R.layout.activity_preview_daily);
         viewPager = findViewById(R.id.view_pager);
         set_as_bcgrnd = findViewById(R.id.set_as_bcgrnd);
+        unliked = findViewById(R.id.like);
         download = findViewById(R.id.download);
 
 
@@ -124,12 +125,30 @@ public class Preview_daily extends AppCompatActivity {
             }
         });
 
+        unliked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Grid_model grid_model=grid_models.get(viewPager.getCurrentItem());
+                if (grid_model.getIsmyfavourite().equalsIgnoreCase("0")){
+                    unliked.setImageDrawable(getResources().getDrawable(R.drawable.liked));
+
+                    like(grid_model,1);
+                    grid_model.setismyfavourite("1");
+
+                }
+                else if (grid_model.getIsmyfavourite().equalsIgnoreCase("1")) {
+                    unliked.setImageDrawable(getResources().getDrawable(R.drawable.unliked));
+                    like(grid_model,0);
+                    grid_model.setismyfavourite("0");
+                }
+            }
+        });
 
 
         /*adView = findViewById(R.id.adView);
         MobileAds.initialize(this,App_ID);
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);*/
+       adView.loadAd(adRequest);*/
 
         //viewPager = findViewById(R.id.img_preview);
 
@@ -141,6 +160,16 @@ public class Preview_daily extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+                Grid_model grid_model=grid_models.get(viewPager.getCurrentItem());
+                if (grid_model.getIsmyfavourite().equalsIgnoreCase("0")){
+                    unliked.setImageDrawable(getResources().getDrawable(R.drawable.unliked));
+
+//                    like(grid_model,0);
+                }
+                else if (grid_model.getIsmyfavourite().equalsIgnoreCase("1")) {
+                    unliked.setImageDrawable(getResources().getDrawable(R.drawable.liked));
+//                    like(grid_model,1);
+                }
             }
 
             @Override
@@ -157,7 +186,7 @@ public class Preview_daily extends AppCompatActivity {
         AdView adView = findViewById(R.id.adView);
         MobileAds.initialize(getApplicationContext(),"ca-app-pub-7796828333997958/4152584076");
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+       adView.loadAd(adRequest);
 
         mInterstitialAd = new InterstitialAd(this);
 
@@ -229,9 +258,29 @@ public class Preview_daily extends AppCompatActivity {
 
     private void showInterstitial() {
         if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
+             mInterstitialAd.show();
         }
     }
+
+    public void like(Grid_model grid_model, int i){
+
+        final String url="http://charmhdwallpapers.com/wallpaper/fav?favourite="+i+"&image_id="+grid_model.getId()+"&device_id="+Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        Volley.newRequestQueue(getApplicationContext()).add(new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("like url",url);
+                Log.e("like response",response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }));
+    }
+
 
     class DownloadFile extends AsyncTask<String, Integer, Long> {
         //        ProgressDialog mProgressDialog = new ProgressDialog(ImageDetails.this);// Change Mainactivity.this with your activity name.

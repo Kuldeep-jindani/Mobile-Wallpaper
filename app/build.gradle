@@ -6,7 +6,7 @@ android {
         applicationId "project.sau.pro.com.wallpaper"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 3
+        versionCode 5
         multiDexEnabled true
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         adView = findViewById(R.id.adView);
         MobileAds.initialize(this,App_ID);
         AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+       adView.loadAd(adRequest);
 
 /*
         interstitialAd = new InterstitialAd(this);
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private void showInterstitial() {
         if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
+             mInterstitialAd.show();
         }
     }
 
