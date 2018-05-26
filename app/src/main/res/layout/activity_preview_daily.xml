@@ -54,6 +54,19 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.gms.ads.AdView
+            android:layout_width="match_parent"
+            android:id="@+id/adView"
+            ads:adSize = "BANNER"
+            ads:adUnitId = "ca-app-pub-7796828333997958/4152584076"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+        </com.google.android.gms.ads.AdView>
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -62,6 +75,55 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/set_bckgrnd"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:layout_alignParentBottom="true"
+            android:background="#80000000"
+            android:layout_alignBottom="@id/img_preview"
+            android:orientation="horizontal">
+
+
+            <ImageView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_download"
+            android:id="@+id/download"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/unliked"
+                android:id="@+id/like"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                />
+
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set As Wallpaper"
+                android:id="@+id/set_as_bcgrnd"
+                android:src="@mipmap/setaswallpaper"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:textColor="#FFFFFF"
+                />
+        </LinearLayout>
     </RelativeLayout>
   <!--  <RelativeLayout
 

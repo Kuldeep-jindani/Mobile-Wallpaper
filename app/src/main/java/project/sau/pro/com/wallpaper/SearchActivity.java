@@ -89,4 +89,7 @@ public class SearchActivity extends AppCompatActivity {
 
 //        new paginator_search(SearchActivity.this,pullToLoadView).initializePagination();
     }
+
+
+
 }

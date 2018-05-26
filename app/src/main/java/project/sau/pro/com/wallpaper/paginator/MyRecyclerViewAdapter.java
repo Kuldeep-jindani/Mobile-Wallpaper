@@ -59,6 +59,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         final Grid_model grid_model = grid_models.get(position);
         Picasso.get().load(grid_model.getImg_url())
                 .placeholder(R.drawable.ic_launcher_background)
+                .resize(300,500)
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.imageView);
         holder.textView.setText(grid_model.getFavourite_no());

@@ -44,7 +44,7 @@ public class CategoriesFragment extends Fragment {
         AdView adView = view.findViewById(R.id.adView);
         MobileAds.initialize(getContext(),"ca-app-pub-7796828333997958/4152584076");
         AdRequest adRequest = new AdRequest.Builder().addTestDevice("ca-app-pub-7796828333997958/4152584076").build();
-        adView.loadAd(adRequest);
+       adView.loadAd(adRequest);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
 
         String URL="http://www.charmhdwallpapers.com/wallpaper/category";/*?page_size=20&last_item_id=0&device_uid=c699fde86c24b1c&category_id=&category_type=Hot&color_code=&count=0%22";*/
