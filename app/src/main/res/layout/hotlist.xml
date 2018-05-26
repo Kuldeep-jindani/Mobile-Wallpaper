@@ -16,7 +16,6 @@
         android:layout_margin="1dp"
         android:scaleType="fitXY"
         android:id="@+id/img_gride_hot"
-
         />
 
         <LinearLayout

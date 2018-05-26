@@ -20,7 +20,6 @@ public class SplashScreen extends AppCompatActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-               // ((AnimationDrawable) getWindow().getDecorView().getBackground()).start();
                 callActivity();
 
             }
