@@ -26,8 +26,5 @@ public class CategoryImages extends AppCompatActivity {
 
         new Paginator_categoryimage(getApplicationContext(),category_images,string);
 
-
-
-
     }
 }

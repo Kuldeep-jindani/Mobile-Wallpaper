@@ -30,107 +30,109 @@ public class SplashScreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
 //        ((AnimationDrawable) getWindow().getDecorView().getBackground()).start();
-<<<<<<< HEAD
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 callActivity();
-=======
->>>>>>> da4836d8edc872889a7421cfabd655f3384ce52e
 
-        if (!checkPermission()){
-            requestPermission();
-        }else {
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    // ((AnimationDrawable) getWindow().getDecorView().getBackground()).start();
-                    callActivity();
+                if (!checkPermission()) {
+                    requestPermission();
+                } else {
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // ((AnimationDrawable) getWindow().getDecorView().getBackground()).start();
+                            callActivity();
 
+                        }
+
+                    }, SPLASH_TIME_OUT);
+                }
+            }
+
+
+            private void callActivity() {
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
+            }
+
+
+
+
+            @Override
+            protected void onDestroy() {
+                if (mHandler != null && mRunnable != null) {
+                    mHandler.removeCallbacks(mRunnable);
                 }
 
-            }, SPLASH_TIME_OUT);
-        }
-    }
+                super.onDestroy();
+            }
 
-    private void callActivity() {
-        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            private static final int PERMISSION_REQUEST_CODE = 200;
 
-        startActivity(intent);
-    }
+            private boolean checkPermission() {
+                int result = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
+                int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
 
+                return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+            }
 
-    @Override
-    protected void onDestroy() {
-        if (mHandler != null && mRunnable != null){
-            mHandler.removeCallbacks(mRunnable);
-        }
+            private void requestPermission() {
 
-        super.onDestroy();
-    }
-    private static final int PERMISSION_REQUEST_CODE = 200;
-    private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
-        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(SplashScreen.this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
 
-        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
-    }
+            }
 
-    private void requestPermission() {
+            @Override
+            public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+                switch (requestCode) {
+                    case PERMISSION_REQUEST_CODE:
+                        if (grantResults.length > 0) {
 
-        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+                            boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                            boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
-    }
+                            if (locationAccepted && cameraAccepted) {
+                                Toast.makeText(SplashScreen.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            } else {
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0) {
+                                Toast.makeText(SplashScreen.this, "Permission Denied", Toast.LENGTH_SHORT).show();
 
-                    boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
+                                        showMessageOKCancel("You need to allow access to both the permissions",
+                                                new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                                            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE},
+                                                                    PERMISSION_REQUEST_CODE);
+                                                        }
+                                                    }
+                                                });
+                                        return;
+                                    }
+                                }
 
-                    if (locationAccepted && cameraAccepted) {
-                        Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    }else {
-
-                        Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
-                                showMessageOKCancel("You need to allow access to both the permissions",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                    requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE},
-                                                            PERMISSION_REQUEST_CODE);
-                                                }
-                                            }
-                                        });
-                                return;
                             }
                         }
 
-                    }
+
+                        break;
                 }
+            }
 
 
-                break;
+            private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+                new AlertDialog.Builder(SplashScreen.this)
+                        .setMessage(message)
+                        .setPositiveButton("OK", okListener)
+                        .setNegativeButton("Cancel", null)
+                        .create()
+                        .show();
+            }
+
         }
-    }
-
-
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(SplashScreen.this)
-                .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
-                .create()
-                .show();
-    }
-
-}
